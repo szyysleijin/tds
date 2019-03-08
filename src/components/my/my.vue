@@ -4,10 +4,8 @@
  -->
 <template>
    <div class='my'>
-      <div class='top'>
-         <p @click='hist'></p>
-         <span>我的</span>
-      </div>
+      <!-- 顶部名称 -->
+      <top :topName='topName'></top>
       <!-- 头像，电话姓名 -->
       <div class='header'>
          <img src="./../../assets/images/addimg.png" alt="">
@@ -16,16 +14,16 @@
             <p>{{obj[0].telephone}}</p>
          </div>
       </div>
-      <!-- TV点 -->
+      <!-- TV点 任务DOS-->
       <div class='tv'>
-         <div @click='goMy'>
+         <div @click='goMyTV'>
             <p>TV点</p>
-            <p>1000</p>
+            <p>{{TV.count}}</p>
          </div>
 
-         <div @click='goMy'>
+         <div @click='goMyDOS'>
             <p>任务DOS</p>
-            <p>1000</p>
+            <p>{{DOS.count}}</p>
          </div>
       </div>
 
@@ -64,27 +62,40 @@
 </template>
 
 <script>
+   import top from './TopTemp'
    import taskFooter from './footer'
    export default {
       data() {
          return {
-            obj: [{
-               name: '李先生',
-               telephone: '13712345678'
-            }]
+            topName:'我的',
+            obj: [
+               {
+                  name: '李先生',
+                  telephone: '13712345678'
+               }
+            ],
+            TV:{
+               count:1000,   //余额,
+               title:'TV明细',
+
+            },
+            DOS:{
+               count:1000,   //余额,
+               title:'DOS明细'
+            }
          }
       },
       components: {
-         taskFooter
+         taskFooter,
+         top
       },
       methods:{
-         hist(){
-            this.$router.go(-1);
+         goMyTV(e){
+             this.$router.push({path:'/TVdetail',query:{data:JSON.stringify(this.TV)}})
          },
-         goMy(){
-            this.$router.push('/tv')
+         goMyDOS(){
+            this.$router.push({path:'/TVdetail',query:{data:JSON.stringify(this.DOS)}})
          }
-         
       }
    }
 </script>
@@ -135,11 +146,11 @@
    }
 
    .my .tv div {
-      height: .7rem;
+      height: 1.81rem;
       float: left;
       text-align: center;
       width: 50%;
-      margin-top: .4rem;
+      padding-top: .4rem;
    }
 
    .my .tv div p:first-child {
@@ -180,33 +191,6 @@
       width: 1.24rem;
       height: 1.24rem;
       border-radius: 2rem;
-   }
-
-      .my .top {
-       background: #33d8da;
-      height: 1.35rem;
-      padding-top: .74rem;
-      height: 1.35rem;
-      font-size: 0.36rem;
-      font-weight: normal;
-      color: #ffffff;
-      
-   }
-   .my .top span {
-       width:6rem;
-      text-align: center;
-      display: inline-block;
-   }
-
-   .my .top p {
-       float:left;
-       margin-top:.1rem;
-       width:.21rem;
-       height:.38rem;
-       background:url('./../../assets/images/enter_02.png')no-repeat;
-      display: inline-block;
-      margin-left:.37rem;
-      transform: rotateY(180deg);
    }
 
 

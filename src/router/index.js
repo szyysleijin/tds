@@ -34,14 +34,14 @@ export default new Router({
    linkActiveClass:'active',
    // linkExactActiveClass:'active',
 	routes: [
-      {path:'*',redirect:'/one'},
-      {path:'/tvcount',component:TVcount,},
-      {path:'/tvcountue',component:TVrechargeUE},
-      {path:'/tv',component:TVdetail},
+		{path:'/TVdetail',component:TVdetail},
+		{path:'*',redirect:'/one'},
+		{path:'/tvcount',component:TVcount,},
+		{path:'/tvcountue',component:TVrechargeUE},
+		{path:'/tv',component:TVcount},
 		{path:'/',redirect:'/one'},
-
 		{path:'/my',component:my},
-		{   //  TDS 任务系统
+	  	{   //  TDS 任务系统
 			path: '/one',
 			component: Task,
 			children:[
@@ -51,7 +51,7 @@ export default new Router({
 				{path:'/four',component:TaskChildren_four}
 			]
 		},
-		{
+		{ //  发布的任务
 			path: '/release',
 			component: release,
 			children:[
@@ -61,7 +61,7 @@ export default new Router({
 				{path:'/release_four',component:release_four}
 			]
 		},
-		{
+		{ //  领取的任务
 			path: '/getTask',
 			component: getTask,
 			children:[
@@ -70,8 +70,6 @@ export default new Router({
 				{path:'/getTask_three',component:getTask_three},
 				{path:'/getTask_four',component:getTask_four}
 			]
-		},
-
-
+		}
 	]
 })

@@ -4,10 +4,8 @@
  -->
  <template>
     <div class='getTask'>
-        <div class='top'>
-            <p @click='hist'></p>
-            <span>领取的任务</span>
-        </div> 
+        <!-- 顶部名称 -->
+        <top :topName='topName'></top>
         <!-- 导航 -->
         <TDSnav :list='list'></TDSnav>
 
@@ -19,11 +17,13 @@
  </template>
 
  <script>
+ import top from './TopTemp'
  import TDSnav from './nav'
  import ReleMiddle from './childrenTemplate/task_children_one'
  export default {
      data(){
          return {
+            topName:'领取的任务',
             list: [{
                   name: '全部',
                   path: '/getTask'
@@ -45,12 +45,11 @@
      },
      components:{
          TDSnav,
-         ReleMiddle
+         ReleMiddle,
+         top
      },
      methods:{
-         hist(){
-             this.$router.go(-1)
-         },
+         
          getData(data){
 
          }
@@ -64,33 +63,6 @@
  </script>
 
  <style>
-   .getTask .top {
-       background: #33d8da;
-      height: 1.35rem;
-      padding-top: .74rem;
-      height: 1.35rem;
-      font-size: 0.36rem;
-      font-weight: normal;
-      color: #ffffff;
-      
-   }
-   .getTask .top span {
-	  padding-left:.5rem;
-	  display: inline-block;
-	  width:6rem;
-      text-align: center;
-   }
-
-   .getTask .top p {
-      float:left;
-       margin-top:.1rem;
-       width:.21rem;
-       height:.38rem;
-       background:url('./../../assets/images/enter_02.png')no-repeat;
-      display: inline-block;
-      margin-left:.37rem;
-      transform: rotateY(180deg);
-   }
 
  </style>
  

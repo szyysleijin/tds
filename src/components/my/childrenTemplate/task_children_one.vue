@@ -6,7 +6,7 @@
    <div class='task-children'>
       <div class='ifImg' v-if='is' @click='goMsg'>
          <img src="../../../assets/images/icon_close.png" alt="" @click.stop='isShow'>
-         <p>您当前有 {{count}} 项正在进行中的任务</p>
+         <p>您当前有{{count}}项正在进行中的任务</p>
          <p >赶快戳我去完成任务</p>
       </div>
 
@@ -46,7 +46,7 @@
          //this.list =this.$store.state.release_data;
          this.list =this.$store.state.data;
          this.getData()
-         console.log(1)
+         //console.log(1)
       },
       watch:{
          $route(to,from){
@@ -61,10 +61,10 @@
 //                   this.$router.push('/my')
 //             }
 //          },
-       isShow(e){
+      isShow(e){
 		  if(e.currentTarget.tagName=='IMG')
 			this.is=false
-       },
+      },
        goMsg(e){
 		   
            this.$router.push('/three')
