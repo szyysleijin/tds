@@ -1,60 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<title>TDS任务系统</title>
-		<style>
-		*{padding:0;margin:0;box-sizing: border-box;}
-		ul,li{list-style: none;}
-		a{text-decoration:none; out-line: none; color:#333}
-		  div:before{
-			display: table;
-			content:'';
-		  }
-		  div:after{
-			display: block;
-			content: '';
-			clear:both;
-		  }
-         input::-webkit-input-placeholder { /* WebKit browsers */ 
-            color: #999; 
-         } 
-
-         input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-            color: #999;  
-         } 
-
-         input::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-            color: #999; 
-         } 
-
-         input:-ms-input-placeholder { /* Internet Explorer 10+ */ 
-            color: #999; 
-         } 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>TDS任务系统</title>
+    <style>
+      *{padding:0;margin:0;box-sizing: border-box;}
+      ul,li{list-style: none;}
+      a{text-decoration:none; out-line: none; color:#333}
+      div:before{
+        display: table;
+        content:'';
+      }
+      div:after{
+        display: block;
+        content: '';
+        clear:both;
+      }
     </style>
-	</head>
-	<body>
-		<div id="app"></div>
-		<!-- built files will be auto injected -->
-	</body>
-	<script type="text/javascript">
-		fnResize();
-		window.onresize = function() {
-			fnResize();
-		};
-
-		function fnResize() {
-			var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
-			if (deviceWidth >= 750) {
-				deviceWidth = 750;
-			}
-			if (deviceWidth <= 320) {
-				deviceWidth = 320;
-			}
-			document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px';
-		};
-	</script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script type="text/javascript">
+    fnResize();
+    window.onresize = function () {
+      fnResize();
+    };
+    function fnResize() {
+      var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+      if (deviceWidth >= 750) {
+        deviceWidth = 750;
+      }
+      if (deviceWidth <= 320) {
+        deviceWidth = 320;
+      }
+      document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px';
+    };
+  </script>
 </html>

@@ -1,4 +1,4 @@
-<!-- 
+<!--
 footer 组件
 雷锦
 -->
@@ -8,17 +8,17 @@ footer 组件
       <div>
          <router-link to='/' class='hall' >
             <!-- icon_normal_dt-1.png    icon_active_dt.png -->
-            <span :class="isActive==='/one'?'icon2':'icon1'" ></span>   
+            <span :class="isActive==='/dos'?'icon2':'icon1'" ></span>
             <br>
-            <span :class="isActive==='/one'?'iconFont':''">大厅</span>
+            <span :class="isActive==='/dos'?'iconFont':''">大厅</span>
          </router-link>
-         <router-link to='/my'>
+         <router-link to='/taskAdd'>
             <!-- icon_pb.png -->
             <img class='icon-pb' src='../../assets/images/icon_pb.png' alt="">
          </router-link>
          <router-link to='/my' class='my'>
             <!-- icon_normal_dt.png    icon_active_my.png-->
-            <span :class="$route.path=='/my'?'icon4':'icon3'" ></span> 
+            <span :class="$route.path=='/my'?'icon4':'icon3'" ></span>
             <br>
             <span :class="$route.path=='/my'?'iconFont':''">我</span>
          </router-link>
@@ -37,7 +37,7 @@ footer 组件
          this.isActive = this.$route.path;
       },
       methods:{
-        
+
       },
       computed:{
          i(){
@@ -49,7 +49,7 @@ footer 组件
    }
 </script>
 
-<style>
+<style scoped>
    .icon4{
       background:url('./../../assets/images/icon_active_my.png') no-repeat;
       display: inline-block;

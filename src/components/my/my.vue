@@ -1,37 +1,38 @@
-<!-- 
+<!--
 06 我的
 雷锦
  -->
 <template>
    <div class='my'>
-      <!-- 顶部名称 -->
-      <top :topName='topName'></top>
+
+     <Header title="我的"/>
       <!-- 头像，电话姓名 -->
-      <div class='header'>
+      <div class='header-top'>
          <img src="./../../assets/images/addimg.png" alt="">
-         <div>
+         <div class='userName'>
             <p>{{obj[0].name}}</p>
             <p>{{obj[0].telephone}}</p>
          </div>
       </div>
+
       <!-- TV点 任务DOS-->
       <div class='tv'>
-         <div @click='goMyTV'>
-            <p>TV点</p>
-            <p>{{TV.count}}</p>
-         </div>
+        <router-link :to="{path:'/TVdetail',query:{data:JSON.stringify(this.TV)}}"  tag="div">
+          <p>TV点</p>
+          <p>{{TV.count}}</p>
+        </router-link>
 
-         <div @click='goMyDOS'>
-            <p>任务DOS</p>
-            <p>{{DOS.count}}</p>
-         </div>
+        <router-link :to="{path:'/TVdetail',query:{data:JSON.stringify(this.DOS)}}" tag="div">
+          <p>任务DOS</p>
+          <p>{{DOS.count}}</p>
+        </router-link>
       </div>
 
       <!-- 充值tv点  发布的任务 领取的任务-->
       <div class='getTV'>
          <ul>
             <li>
-               <router-link to='/tv'>
+               <router-link to='/tvcount'>
                   <img src="./../../assets/images/icon_my_TV.png" alt="">
                   <span>充值TV点</span>
                   <img src="./../../assets/images/enter.png" alt="">
@@ -53,27 +54,21 @@
             </li>
          </ul>
       </div>
-
-
-
       <!-- footer -->
       <taskFooter></taskFooter>
    </div>
 </template>
 
 <script>
-   import top from './TopTemp'
+  const Header = () => import('@/components/Header')
    import taskFooter from './footer'
    export default {
       data() {
          return {
-            topName:'我的',
-            obj: [
-               {
-                  name: '李先生',
-                  telephone: '13712345678'
-               }
-            ],
+            obj: [{
+               name: '李先生',
+               telephone: '13712345678'
+            }],
             TV:{
                count:1000,   //余额,
                title:'TV明细',
@@ -87,20 +82,16 @@
       },
       components: {
          taskFooter,
-         top
+          Header
       },
       methods:{
-         goMyTV(e){
-             this.$router.push({path:'/TVdetail',query:{data:JSON.stringify(this.TV)}})
-         },
-         goMyDOS(){
-            this.$router.push({path:'/TVdetail',query:{data:JSON.stringify(this.DOS)}})
-         }
-      }
+
+      },
+
    }
 </script>
 
-<style>
+<style scoped>
    .my .getTV li a img {
       width: .48rem;
       height: .48rem;
@@ -116,19 +107,13 @@
    }
 
    .my .getTV li {
-      vertical-align: middle;
       height: 1rem;
       background: #fff;
       line-height: 1rem;
       padding-left: .32rem;
-      border-bottom:.01rem dashed #eee;
    }
-   .my .getTV li:last-child{
-      border-bottom:0;
-   } 
    .my .getTV li span{
       padding-left:.18rem;
-      vertical-align: middle;
    }
    .my .getTV li a{
       display: inline-block;
@@ -146,11 +131,11 @@
    }
 
    .my .tv div {
-      height: 1.81rem;
+      height: .7rem;
       float: left;
       text-align: center;
       width: 50%;
-      padding-top: .4rem;
+      margin-top: .4rem;
    }
 
    .my .tv div p:first-child {
@@ -164,33 +149,60 @@
       font-size: .36rem;
    }
 
-   .my .header {
+   .my .header-top {
       height: 2.3rem;
       background: #33d8da;
       padding-left: .32rem;
       padding-top: .3rem;
    }
 
-   .my .header div {
+   .userName {
       margin-top: .15rem;
       margin-left: .31rem;
       float: left
    }
 
-   .my .header div p {
+   .userName p {
       font-size: .36rem;
       color: #fff;
    }
 
-   .my .header div p:first-child {
+   .my .header-top div p:first-child {
       margin-bottom: .1rem;
    }
 
-   .my .header img {
+   .my .header-top img {
       float: left;
       width: 1.24rem;
       height: 1.24rem;
       border-radius: 2rem;
+   }
+
+      .my .top {
+       background: #33d8da;
+      height: 1.35rem;
+      padding-top: .74rem;
+      height: 1.35rem;
+      font-size: 0.36rem;
+      font-weight: normal;
+      color: #ffffff;
+
+   }
+   .my .top span {
+       width:6rem;
+      text-align: center;
+      display: inline-block;
+   }
+
+   .my .top p {
+       float:left;
+       margin-top:.1rem;
+       width:.21rem;
+       height:.38rem;
+       background:url('./../../assets/images/enter_02.png')no-repeat;
+      display: inline-block;
+      margin-left:.37rem;
+      transform: rotateY(180deg);
    }
 
 

@@ -1,21 +1,22 @@
-<!-- 
-08 充值TV点 
+<!--
+08 充值TV点
 雷锦
 -->
 <template>
    <div class='TVcount'>
-      <!-- 顶部名称 -->
-      <top :topName='topName'></top>
-      <!-- 任务DOS兑换 -->
+
+     <Header :title="open==1?'充值TV点':'充值UE点'"/>
+      <!-- 任务兑换 -->
       <div class='TVcount-button'>
-         <div>
-            <router-link class='left' to='/tvcount' exact>任务DOS兑换</router-link>
+         <div @click='open1' >
+           <span :class='open==1?"cli":""'>任务DOS兑换</span>
          </div>
        <!-- UE的DOS兑换 -->  
-         <div>
-            <router-link  to='/tvcountUE' >UE的DOS兑换</router-link>
+         <div @click='open2' > 
+            <span :class='open==2?"cli":""'>UE的DOS兑换</span>
          </div>
       </div>
+
       <!-- 充值组件 -->
       <TVrechargeMd :data='data'></TVrechargeMd>
       <!-- button 底部 -->
@@ -26,12 +27,16 @@
 </template>
 
 <script>
-import top from './TopTemp'
-import TVrechargeMd from './TVrechargeMd/TVrechargeMd'
+  const Header = () => import('@/components/Header')
+  import TVrechargeMd from './tv/tv'
 export default{
+    components:{
+      Header,
+      TVrechargeMd
+    },
    data(){
       return {
-         topName:'充值TV点',
+         open:1,
          data:{
             title:'任务DOS兑换',
             titleCount:1000,
@@ -43,16 +48,30 @@ export default{
       }
    },
    methods:{
-
+      open1(){
+         this.open=1;
+         this.data.title='任务DOS兑换';
+         this.data.sub='TV点余额';
+      },
+      open2(){
+         this.open=2;
+         this.data.title='UE的DOS余额';
+         this.data.sub='UE点余额'  ;
+      }
    },
-   components:{
-      TVrechargeMd,
-      top
+   created(){
+      if(this.$route.params.count==undefined)
+         this.open=1;
+      else{
+         this.open = this.$route.params.count
+         this.data.title='UE的DOS余额';
+         this.data.sub='UE点余额'  ;
+      }
    }
 }
 </script>
 
-<style>
+<style scoped>
    .TVcountFooter {
       display: inline-block;
       width: 6.86rem;
@@ -93,11 +112,16 @@ export default{
       font-size: .3rem;
    }
 
-   .TVcount-button .left {
+   .TVcount-button .cli {
       border-bottom: 3px solid #fff;
    }
+   .TVcount-button div span{
+      display: inline-block;
+      width:65%;
+      height:.7rem;
 
-   .TVcount-button div a {
+   }
+   .TVcount-button div  {
       width: 2.3rem;
       color: #fff;
       height: .71rem;

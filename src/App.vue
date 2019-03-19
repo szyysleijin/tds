@@ -20,7 +20,11 @@ body {
   font-size: 0.30rem;
   background-color: #f2f2f2;
   color: #333;
-  margin-bottom:2rem;
+  padding: 0;
+  margin: 0;
 }
-
+html, body, #app {
+  width: 100%;
+  height: 100%;
+}
 </style>
